@@ -1,0 +1,24 @@
+default: &default
+  adapter:  <%= ENV.fetch('DB_ADAPTER', 'postgresql') %>
+  encoding: utf8
+  host:     <%= ENV.fetch('PG_HOST',    'localhost') %>
+  port:     <%= ENV.fetch('PG_PORT',    '5432') %>
+  username: <%= ENV.fetch('PG_USERNAME', 'project') %>
+  password: <%= ENV.fetch('PG_PASSWORD', '123456') %>
+  pool:     <%= ENV.fetch('RAILS_MAX_THREADS', 5) %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch('PG_DB', 'alert_task_dev') %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch('PG_DB', 'alert_task_test') %>
+
+staging:
+  <<: *default
+  database: <%= ENV.fetch('PG_DB', 'alert_task_staging') %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch('PG_DB', 'alert_task_prod') %>
