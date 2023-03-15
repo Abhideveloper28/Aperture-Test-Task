@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Alerts</h1>
+
+<div id="alerts">
+  <% @alerts.each do |alert| %>
+    <%= render alert %>
+    <p>
+      <% --------------------------------------------- %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "Log out", logout_path, method: "delete" %>
